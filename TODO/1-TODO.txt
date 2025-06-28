@@ -1,0 +1,80 @@
+
+/// branch: main
+
+/// pipenv link => https://pipenv.pypa.io/en/latest/
+
+=>At first django project create command
+
+=> mkdir myproject
+=> cd myproject
+=> pip install --user pipenv
+=> > python -m site --user-site
+C:\Users\Username\AppData\Roaming\Python\Python310\site-packages 9windows)
+# On Linux/macOS
+=> sudo pip install pipenv
+=> export PATH="$HOME/.local/bin:$PATH"(macos)
+=> brew install pipenv (macos)
+=> pip install pipenv (windows)
+=========================================
+=> pipenv shell
+=> exit ( out pipenv shell)
+=> pipenv install django
+=> pipenv install pillow
+=> pipenv shell
+=> django-admin startproject myproject .
+##Create Supper user
+=====================
+=> python manage.py migrate
+=> python manage.py createsuperuser
+=> python manage.py startapp myapp
+=> python manage.py startapp orders
+=> exit
+
+# myproject/setting.py
+NSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'myapp',  # Replace with your actual app name
+    'orders',  # Replace with your actual app name
+
+]
+
+
+## myproject/urls.py
+============================
+from django.contrib import admin
+from django.urls import path,include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('app/', include('myapp.urls')),
+    path('orders/', include('orders.urls')),
+]
+
+## myapp/urls.py (created)
+my_app/templates/- index.html
+==========================
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('first/', views.my_app),
+    path('home/', views.index, name='index'),
+    
+]
+
+## myapp/views.py
+======================
+from django.shortcuts import render
+from django.http import HttpResponse
+
+def my_app(request):
+    return HttpResponse ("This is test app view")
+def index(request):
+    return render(request, 'index.html')
+
+# same to order app
