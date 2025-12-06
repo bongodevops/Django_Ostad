@@ -7,15 +7,7 @@
 
 => mkdir myproject
 => cd myproject
-=> pip install --user pipenv
-=> > python -m site --user-site
-C:\Users\Username\AppData\Roaming\Python\Python310\site-packages 9windows)
-# On Linux/macOS
-=> sudo pip install pipenv
-=> export PATH="$HOME/.local/bin:$PATH"(macos)
-=> brew install pipenv (macos)
-=> pip install pipenv (windows)
-=========================================
+=> pipenv --python /usr/bin/python3 (if erorr)
 => pipenv shell
 => exit ( out pipenv shell)
 => pipenv install django
@@ -56,7 +48,7 @@ urlpatterns = [
 ]
 
 ## myapp/urls.py (created)
-my_app/templates/- index.html
+my_app/templates/index.html
 ==========================
 from django.urls import path
 from . import views
